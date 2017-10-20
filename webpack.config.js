@@ -63,9 +63,9 @@ if (NODE_ENV === 'production') {
                 unsafe:       true
             }
         }),
-        new CopyWebpackPlugin([
-            {from: 'img/favicon.ico', to: 'img/favicon.ico'}
-        ]),
+        // new CopyWebpackPlugin([
+        //     {from: 'img/favicon.ico', to: 'img/favicon.ico'}
+        // ]),
         new CopyWebpackPlugin([
             {from: 'index.html', to: '../index.html'}
         ]),

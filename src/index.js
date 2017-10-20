@@ -7,6 +7,8 @@ import './main.sass'
 
 
 render(
-    <App  />,
+    <Provider store={store}>
+        <App  />
+    </Provider>,
     document.getElementById('container')
 );
