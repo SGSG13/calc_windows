@@ -15,24 +15,28 @@ class Right extends Component {
             single: 1,
             singleW: 400,
             singleH: 400,
+            count1: 0,
 
             double1: 1,
             double2: 1,
             doubleW: 1000,
             doubleH: 800,
+            count2: 0,
 
             triple1: 1,
             triple2: 1,
             triple3: 1,
             tripleW: 1500,
             tripleH: 800,
+            count3: 0,
 
             quadruple1: 1,
             quadruple2: 1,
             quadruple3: 1,
             quadruple4: 1,
-            quadrupleW: 1500,
+            quadrupleW: 2000,
             quadrupleH: 800,
+            count4: 0,
 
             singleDoor: 1,
             singleDoorW: 500,
@@ -44,6 +48,7 @@ class Right extends Component {
             doubleDoor2: 1,
             doubleDoor2W: 500,
             doubleDoor2H: 1700,
+            count5: 0,
             
             tripleDoor1: 1,
             tripleDoor1W: 1500,
@@ -51,7 +56,8 @@ class Right extends Component {
             tripleDoor2: 1,
             tripleDoor3: 1,
             tripleDoor3W: 500,
-            tripleDoor3H: 1700
+            tripleDoor3H: 1700,
+            count6: 0
         }
     }
     
@@ -69,7 +75,7 @@ class Right extends Component {
 
     setConfigWindow = (item) => {
         const count = this.state[item];
-        
+
         if(item === 'single'
         || item === 'triple2'
         || item === 'quadruple2'
@@ -77,29 +83,107 @@ class Right extends Component {
         || item === 'tripleDoor2'
         ) {
             if(count === 3) {
-                this.setState({[item]: 1})
+                this.setState({[item]: 1});
+                switch (item){
+                    case 'single':
+                        this.setState({ count1: this.state.count1 - 1});
+                        break;
+                    case 'triple2':
+                        this.setState({ count3: this.state.count3 - 1});
+                        break;
+                    case 'quadruple2':
+                        this.setState({ count4: this.state.count4 - 1});
+                        break;
+                    case 'quadruple3':
+                        this.setState({ count4: this.state.count4 - 1});
+                        break;
+                    case 'tripleDoor2':
+                        this.setState({ count6: this.state.count6 - 1});
+                        break;
+                }
             } else {
-                this.setState({[item]: count + 1})
+                this.setState({[item]: count + 1});
+                if(count === 2) return;
+                switch (item) {
+                    case 'single':
+                        this.setState({count1: this.state.count1 + 1});
+                        break;
+                    case 'triple2':
+                        this.setState({count3: this.state.count3 + 1});
+                        break;
+                    case 'quadruple2':
+                        this.setState({count4: this.state.count4 + 1});
+                        break;
+                    case 'quadruple3':
+                        this.setState({count4: this.state.count4 + 1});
+                        break;
+                    case 'tripleDoor2':
+                        this.setState({count6: this.state.count6 + 1});
+                        break;
+                }
             }
         } else {
             if(count === 2) {
-                this.setState({[item]: 1})
+                this.setState({[item]: 1});
+                switch (item){
+                    case 'double1':
+                        this.setState({ count2: this.state.count2 - 1});
+                        break;
+                    case 'double2':
+                        this.setState({ count2: this.state.count2 - 1});
+                        break;
+                    case 'triple1':
+                        this.setState({ count3: this.state.count3 - 1});
+                        break;
+                    case 'quadruple1':
+                        this.setState({ count4: this.state.count4 - 1});
+                        break;
+                    case 'quadruple4':
+                        this.setState({ count4: this.state.count4 - 1});
+                        break;
+                    case 'doubleDoor1':
+                        this.setState({ count5: this.state.count5 - 1});
+                        break;
+                    case 'tripleDoor1':
+                        this.setState({ count6: this.state.count6 - 1});
+                        break;
+                    case 'triple3':
+                        this.setState({ count6: this.state.count6 - 1});
+                        break;
+                }
+
             } else {
-                this.setState({[item]: count + 1})
+                this.setState({[item]: count + 1});
+                switch (item){
+                    case 'double1':
+                        this.setState({ count2: this.state.count2 + 1});
+                        break;
+                    case 'double2':
+                        this.setState({ count2: this.state.count2 + 1});
+                        break;
+                    case 'triple1':
+                        this.setState({ count3: this.state.count3 + 1});
+                        break;
+                    case 'quadruple1':
+                        this.setState({ count4: this.state.count4 + 1});
+                        break;
+                    case 'quadruple4':
+                        this.setState({ count4: this.state.count4 + 1});
+                        break;
+                    case 'doubleDoor1':
+                        this.setState({ count5: this.state.count5 + 1});
+                        break;
+                    case 'tripleDoor1':
+                        this.setState({ count6: this.state.count6 + 1});
+                        break;
+                    case 'triple3':
+                        this.setState({ count6: this.state.count6 + 1});
+                        break;
+                }
             }
         }
     };
-    
-    // setConfigDoor = (item) => {
-    //     const count = this.state[item];
-    //    
-    //         if(count === 2) {
-    //             this.setState({[item]: 1})
-    //         } else {
-    //             this.setState({[item]: count + 1})
-    //         }
-    // };
-    //
+
     setSingleTitle = (item) => {
         switch (this.state[item]){
             case 1:
@@ -129,15 +213,6 @@ class Right extends Component {
         }
     };
 
-    // setDoorTitle = (item) => {
-    //     switch (this.state[item]){
-    //         case 1:
-    //             return 'Дверь левая';
-    //         case 2:
-    //             return 'Дверь левая с откр-ем вверх';
-    //     }
-    // };
-    
     handleChangeSize = (event) => {
       const {value, name} = event.target;
         if(value.match(/^[0-9]+$/) || value === ''){
@@ -173,6 +248,246 @@ class Right extends Component {
                         })
                     }
                     break;
+                case "doubleW":
+                    if(value > 100 && value < 1000){
+                        this.setState({
+                            [name]: 1000
+                        })
+                    } else if (value > 2400) {
+                        this.setState({
+                            [name]: 2400
+                        })
+                    } else {
+                        this.setState({
+                            [name]: value
+                        })
+                    }
+                    break;
+                case "doubleH":
+                    if(value > 100 && value < 800){
+                        this.setState({
+                            [name]: 800
+                        })
+                    } else if (value > 2300) {
+                        this.setState({
+                            [name]: 2300
+                        })
+                    } else {
+                        this.setState({
+                            [name]: value
+                        })
+                    }
+                    break;
+                case "tripleW":
+                    if(value > 100 && value < 1500){
+                        this.setState({
+                            [name]: 1500
+                        })
+                    } else if (value > 2900) {
+                        this.setState({
+                            [name]: 2900
+                        })
+                    } else {
+                        this.setState({
+                            [name]: value
+                        })
+                    }
+                    break;
+                case "tripleH":
+                    if(value > 100 && value < 800){
+                        this.setState({
+                            [name]: 800
+                        })
+                    } else if (value > 2300) {
+                        this.setState({
+                            [name]: 2300
+                        })
+                    } else {
+                        this.setState({
+                            [name]: value
+                        })
+                    }
+                    break;
+                case "quadrupleW":
+                    if(value > 100 && value < 2000){
+                        this.setState({
+                            [name]: 2000
+                        })
+                    } else if (value > 3400) {
+                        this.setState({
+                            [name]: 3400
+                        })
+                    } else {
+                        this.setState({
+                            [name]: value
+                        })
+                    }
+                    break;
+                case "quadrupleH":
+                    if(value > 100 && value < 800){
+                        this.setState({
+                            [name]: 800
+                        })
+                    } else if (value > 2300) {
+                        this.setState({
+                            [name]: 2300
+                        })
+                    } else {
+                        this.setState({
+                            [name]: value
+                        })
+                    }
+                    break;
+                case "singleDoorW":
+                    if(value > 100 && value < 500){
+                        this.setState({
+                            [name]: 500
+                        })
+                    } else if (value > 1200) {
+                        this.setState({
+                            [name]: 1200
+                        })
+                    } else {
+                        this.setState({
+                            [name]: value
+                        })
+                    }
+                    break;
+                case "singleDoorH":
+                    if(value > 100 && value < 1700){
+                        this.setState({
+                            [name]: 1700
+                        })
+                    } else if (value > 2300) {
+                        this.setState({
+                            [name]: 2300
+                        })
+                    } else {
+                        this.setState({
+                            [name]: value
+                        })
+                    }
+                    break;
+                case "doubleDoor2W":
+                    if(value > 100 && value < 500){
+                        this.setState({
+                            [name]: 500
+                        })
+                    } else if (value > 1200) {
+                        this.setState({
+                            [name]: 1200
+                        })
+                    } else {
+                        this.setState({
+                            [name]: value
+                        })
+                    }
+                    break;
+                case "doubleDoor2H":
+                    if(value > 100 && value < 1700){
+                        this.setState({
+                            [name]: 1700
+                        })
+                    } else if (value > 2300) {
+                        this.setState({
+                            [name]: 2300
+                        })
+                    } else {
+                        this.setState({
+                            [name]: value
+                        })
+                    }
+                    break;
+                case "doubleDoor1W":
+                    if(value > 100 && value < 900){
+                        this.setState({
+                            [name]: 900
+                        })
+                    } else if (value > 2700) {
+                        this.setState({
+                            [name]: 2700
+                        })
+                    } else {
+                        this.setState({
+                            [name]: value
+                        })
+                    }
+                    break;
+                case "doubleDoor1H":
+                    if(value > 100 && value < 400){
+                        this.setState({
+                            [name]: 400
+                        })
+                    } else if (value > 1900) {
+                        this.setState({
+                            [name]: 1900
+                        })
+                    } else {
+                        this.setState({
+                            [name]: value
+                        })
+                    }
+                    break;
+                case "tripleDoor3W":
+                    if(value > 100 && value < 500){
+                        this.setState({
+                            [name]: 500
+                        })
+                    } else if (value > 1200) {
+                        this.setState({
+                            [name]: 1200
+                        })
+                    } else {
+                        this.setState({
+                            [name]: value
+                        })
+                    }
+                    break;
+                case "tripleDoor3H":
+                    if(value > 100 && value < 1700){
+                        this.setState({
+                            [name]: 1700
+                        })
+                    } else if (value > 2300) {
+                        this.setState({
+                            [name]: 2300
+                        })
+                    } else {
+                        this.setState({
+                            [name]: value
+                        })
+                    }
+                    break;
+                case "tripleDoor1W":
+                    if(value > 100 && value < 1500){
+                        this.setState({
+                            [name]: 1500
+                        })
+                    } else if (value > 3600) {
+                        this.setState({
+                            [name]: 3600
+                        })
+                    } else {
+                        this.setState({
+                            [name]: value
+                        })
+                    }
+                    break;
+                case "tripleDoor1H":
+                    if(value > 100 && value < 800){
+                        this.setState({
+                            [name]: 800
+                        })
+                    } else if (value > 2300) {
+                        this.setState({
+                            [name]: 2300
+                        })
+                    } else {
+                        this.setState({
+                            [name]: value
+                        })
+                    }
+                    break;
 
                 default:
                     this.setState({
@@ -181,88 +496,209 @@ class Right extends Component {
             }
         }
     };
-    
-    totalPrice = () => {
-        const {item} = this.props;
-        
-        const width = Math.ceil((this.state.singleW)/100)*100;
-        const height = Math.ceil((this.state.singleH)/100)*100;
-        
-        let items = singleWindow.filter(win => win.height === height && win.width === width);
+
+
+    priceWindow = (price, width, height) => {
+      let priceWindow = 0;
+
+        let items = price.filter(win => win.height === height && win.width === width);
         if(items.length < 1) return;
-        let priceWindow = items[0].price * rate;
+        priceWindow = items[0].price * rate;
 
+        return priceWindow;
+    };
 
+    priceProfile = (profile) => {
         let  priceProfile = 1;
-        if(item.profile === 'KBE Gut') {priceProfile = 1}
-        else if (item.profile === 'KBE Master') {priceProfile = 1.05}
-        else if (item.profile === 'KBE Elite 76') {priceProfile = 1.15}
+        if(profile === 'KBE Gut') {priceProfile = 1}
+        else if (profile === 'KBE Master') {priceProfile = 1.05}
+        else if (profile === 'KBE Elite 76') {priceProfile = 1.15}
 
+        return priceProfile
+    };
+
+    priceGlass = (glass, width, height) => {
         let priceGlass = 0;
-        if(item.glass === '2 стекла') {priceGlass = 0}
-        else if (item.glass === '3 стекла') {priceGlass = ((width * height) / 1000000) * (4 * rate)}
+        if(glass === '2 стекла') {priceGlass = 0}
+        else if (glass === '3 стекла') {priceGlass = ((width * height) / 1000000) * (4 * rate)}
 
-        let priceFitting = 6 * rate;
-        if(item.fittings === 'Siegenia Favorit') {priceFitting = 6 * rate}
-        else if (item.fittings === 'Siegenia Titan') {priceFitting = 14 * rate}
-        
+        return priceGlass
+    };
+
+    priceFitting = (fittings, count) => {
+        let priceFitting = 60;
+        if(fittings === 'Siegenia Favorit') {priceFitting = 60}
+        else if (fittings === 'Siegenia Titan') {priceFitting = 75}
+
+        return priceFitting * count;
+    };
+    
+    priceLaminate = (laminate) => {
         let priceLaminate = 1;
-        if(item.laminate === 'Нет') {priceLaminate = 1}
-        else if (item.laminate === 'Внутри') {priceLaminate = 1.3}
-        else if (item.laminate === 'Снаружи') {priceLaminate = 1.25}
-        else if (item.laminate === 'Внутри и снаружи') {priceLaminate = 1.55}
+        if(laminate === 'Нет') {priceLaminate = 1}
+        else if (laminate === 'Внутри') {priceLaminate = 1.3}
+        else if (laminate === 'Снаружи') {priceLaminate = 1.25}
+        else if (laminate === 'Внутри и снаружи') {priceLaminate = 1.55}
+        
+        return priceLaminate
+    };
 
+    priceSill = (sill, width) => {
         let priceSill = 0;
-        switch (item.sill) {
+        switch (sill) {
             case 'Нет':
                 priceSill = 0;
                 break;
             case '100':
-                priceSill = ((width/1000) * (1.18 * rate)) + (1.6 * rate);
+                priceSill = ((width/1000) * (1.18 * rate)) + (0.8 * rate);
                 break;
             case '150':
-                priceSill = ((width/1000) * (1.78 * rate)) + (1.6 * rate);
+                priceSill = ((width/1000) * (1.78 * rate)) + (0.8  * rate);
                 break;
             case '200':
-                priceSill = ((width/1000) * (2.36 * rate)) + (1.6 * rate);
+                priceSill = ((width/1000) * (2.36 * rate)) + (0.8  * rate);
                 break;
             case '250':
-                priceSill = ((width/1000) * (2.96 * rate)) + (1.6 * rate);
+                priceSill = ((width/1000) * (2.96 * rate)) + (0.8  * rate);
                 break;
             case '300':
-                priceSill = ((width/1000) * (3.55 * rate)) + (1.6 * rate);
+                priceSill = ((width/1000) * (3.55 * rate)) + (0.8  * rate);
                 break;
             case '350':
-                priceSill = ((width/1000) * (4.14 * rate)) + (1.6 * rate);
+                priceSill = ((width/1000) * (4.14 * rate)) + (0.8  * rate);
                 break;
             case '400':
-                priceSill = ((width/1000) * (4.73 * rate)) + (1.6 * rate);
+                priceSill = ((width/1000) * (4.73 * rate)) + (0.8  * rate);
                 break;
             case '450':
-                priceSill = ((width/1000) * (5.32 * rate)) + (1.6 * rate);
+                priceSill = ((width/1000) * (5.32 * rate)) + (0.8  * rate);
                 break;
             case '500':
-                priceSill = ((width/1000) * (5.9 * rate)) + (1.6 * rate);
+                priceSill = ((width/1000) * (5.9 * rate)) + (0.8  * rate);
                 break;
             case '600':
-                priceSill = ((width/1000) * (7.1 * rate)) + (1.6 * rate);
+                priceSill = ((width/1000) * (7.1 * rate)) + (0.8  * rate);
                 break;
         }
         
+        return priceSill
+    };
+
+    priceTide = (tide, width) => {
         let priceTide = 0;
-        if(item.tide === 'Нет') {priceTide = 0}
-        else {priceTide = ((item.tide * width) / 1000000) * (7 * rate)}
+        if(tide === 'Нет') {priceTide = 0}
+        else {priceTide = ((tide * width) / 1000000) * (7 * rate)}
         
+        return priceTide
+    };
+    
+    installPrice = (install, calculate, item) => {
+        let installPrice = 0;
         
-        let sum = priceWindow 
-            + ((priceProfile * priceWindow) - priceWindow) 
-            + priceGlass 
-            + priceFitting 
+        if(install === 'Да') {
+            if (calculate === 'windows') {
+                switch (item) {
+                    case 1:
+                        installPrice = 30;
+                        break;
+                    case 2:
+                        installPrice = 35;
+                        break;
+                    case 3:
+                        installPrice = 40;
+                        break;
+                    case 4:
+                        installPrice = 45;
+                        break;
+                }
+            } else {
+                switch (item) {
+                    case 1:
+                        installPrice = 40;
+                        break;
+                    case 2:
+                        installPrice = 50;
+                        break;
+                    case 3:
+                        installPrice = 50;
+                        break;
+                }
+            }
+        } 
+            return installPrice;
+    };
+
+   WindowPrice = (item, width, height, count, price, door) => {
+
+        let priceWindow = this.priceWindow(price, width, height);
+        let priceProfile =  this.priceProfile(item.profile);
+        let priceGlass = this.priceGlass(item.glass, width, height);
+        let priceFitting = this.priceFitting(item.fittings, count);
+        let priceLaminate = this.priceLaminate(item.laminate);
+        let priceSill = !door ? this.priceSill(item.sill, width): 0;
+        let priceTide = !door ? this.priceTide(item.tide, width): 0;
+        let installPrice = !door ? this.installPrice(item.install, item.calculate, item.selectItem) : 0;
+
+        let sum = priceWindow
+            + ((priceProfile * priceWindow) - priceWindow)
+            + priceGlass
+            + priceFitting
             + ((priceLaminate * priceWindow) - priceWindow)
             + priceSill
-            + priceTide;
-        
+            + priceTide
+            + installPrice;
+
         return Math.ceil((sum)*100)/100;
+    };
+    
+    totalPrice = () => {
+        const {item} = this.props;
+
+        if (item.calculate === 'windows') {
+            switch (item.selectItem) {
+                case 1:
+                    const width = Math.ceil((this.state.singleW)/100)*100;
+                    const height = Math.ceil((this.state.singleH)/100)*100;
+                    return this.WindowPrice(item, width, height, this.state.count1, singleWindow, false);
+                case 2:
+                    const widthD = Math.ceil((this.state.doubleW)/100)*100;
+                    const heightD = Math.ceil((this.state.doubleH)/100)*100;
+                    return this.WindowPrice(item, widthD, heightD, this.state.count2, singleWindow, false);
+                    break;
+                case 3:
+                    const widthT = Math.ceil((this.state.tripleW)/100)*100;
+                    const heightT = Math.ceil((this.state.tripleH)/100)*100;
+                    return this.WindowPrice(item, widthT, heightT, this.state.count3, singleWindow, false);
+                    break;
+                case 4:
+                    const widthQ = Math.ceil((this.state.quadrupleW)/100)*100;
+                    const heightQ = Math.ceil((this.state.quadrupleH)/100)*100;
+                    return this.WindowPrice(item, widthQ, heightQ, this.state.count4, singleWindow, false);
+                    break;
+            }
+        } else {
+            switch (item) {
+                case 1:
+                    const widthS = Math.ceil((this.state.singleDoorW)/100)*100;
+                    const heightS = Math.ceil((this.state.singleDoorH)/100)*100;
+                    return this.WindowPrice(item, widthS, heightS, 1, singleWindow, false);
+                    break;
+                case 2:
+                    const widthD1 = (Math.ceil((this.state.doubleDoor1W - this.state.doubleDoor2W)/100)*100) < 400 ? 400: (Math.ceil((this.state.doubleDoor1W - this.state.doubleDoor2W)/100)*100);
+                    const heightD1 = Math.ceil((this.state.doubleDoor1H)/100)*100;
+                    const widthD2 = Math.ceil((this.state.doubleDoor2W)/100)*100;
+                    const heightD2 = Math.ceil((this.state.doubleDoor2H)/100)*100;
+                    return (this.WindowPrice(item, widthD1, heightD1, this.state.count5, singleWindow, false) + this.WindowPrice(item, widthD2, heightD2, 1, singleWindow, true));
+                    break;
+                case 3:
+                    const widthT1 = (Math.ceil((this.state.tripleDoor1W - this.state.tripleDoor3W)/100)*100) < 1000 ? 1000: (Math.ceil((this.state.tripleDoor1W - this.state.tripleDoor3W)/100)*100);
+                    const heightT1 = Math.ceil((this.state.tripleDoor1H)/100)*100;
+                    const widthT2 = Math.ceil((this.state.tripleDoor3W)/100)*100;
+                    const heightT2 = Math.ceil((this.state.tripleDoor3H)/100)*100;
+                    return (this.WindowPrice(item, widthT1, heightT1, this.state.count5, singleWindow, false) + this.WindowPrice(item, widthT2, heightT2, 1, singleWindow, true));
+                    break;
+            }
+        }
     };
     
     renderWindow = () => {
@@ -338,7 +774,6 @@ class Right extends Component {
                             <div className="sizer-up-arrow2"
                                  style={{position: 'absolute', left: 185, top: 8.5}}></div>
                             <input name="doubleW"
-                                   
                                    style={{position: 'absolute', left: 77, top: 4.5}}
                                    value={this.state.doubleW}
                                    type="text"
@@ -496,7 +931,6 @@ class Right extends Component {
                         <div className="sizer-up-arrow2"
                              style={{position: 'absolute', left: 385, top: 8.5}}></div>
                         <input name="quadrupleW"
-
                                style={{position: 'absolute', left: 177, top: 4.5}}
                                value={this.state.quadrupleW}
                                type="text"
@@ -550,11 +984,11 @@ class Right extends Component {
                 return (
                     <div style={{position: 'absolute', left: 0, top: 0, width: 420, height: 380, display: 'block'}}>
                         <div className="wincalc-layout-leaf"
-                             // onClick={this.setConfigDoor.bind(null, 'singleDoor')}
                              style={{cursor: 'pointer', position: 'absolute', left: 190, top: 40, width: 100, height: 300, backgroundImage: `url(img/door-1.png)`}}
                              title="Дверь левая"></div>
                         <div className="wincalc-layout-label"
                              style={{position: 'absolute', left: 200, top: 270, width: 80, height: 20}}>
+                            Дверь левая с откр-ем вверх
                         </div>
                         <div className="sizer-down" title="Ширина"
                              style={{position: 'absolute', left: 190, top: 340, width: 98, height: 30}}>
@@ -594,12 +1028,11 @@ class Right extends Component {
                             {this.setRightTitle('doubleDoor1')}
                         </div>
                         <div className="wincalc-layout-leaf"
-                             onClick={this.setConfigDoor.bind(null, 'doubleDoor2')}
-                             style={{cursor: 'pointer', position: 'absolute', left: 240, top: 40, width: 100, height: 300, backgroundImage: `url(img/door-${this.state.doubleDoor2}.png)`}}
+                             style={{cursor: 'pointer', position: 'absolute', left: 240, top: 40, width: 100, height: 300, backgroundImage: `url(img/door-1.png)`}}
                              title="Дверь левая"></div>
                         <div className="wincalc-layout-label"
                              style={{position: 'absolute', left: 250, top: 270, width: 80, height: 20}}>
-                            {this.setDoorTitle('doubleDoor2')}
+                            Дверь левая с откр-ем вверх
                         </div>
                         <div className="sizer-up" title="Ширина"
                              style={{position: 'absolute', left: 140, top: 0, width: 198, height: 30}}>
@@ -671,12 +1104,12 @@ class Right extends Component {
                             {this.setSingleTitle('tripleDoor2')}
                         </div>
                         <div className="wincalc-layout-leaf"
-                             onClick={this.setConfigDoor.bind(null, 'tripleDoor3')}
-                             style={{cursor: 'pointer', position: 'absolute', left: 290, top: 40, width: 100, height: 300, backgroundImage: `url(img/door-${this.state.tripleDoor3}.png)`}}
+                             // onClick={this.setConfigDoor.bind(null, 'tripleDoor3')}
+                             style={{cursor: 'pointer', position: 'absolute', left: 290, top: 40, width: 100, height: 300, backgroundImage: `url(img/door-1.png)`}}
                              title="Дверь левая с откр-ем вверх"></div>
                         <div className="wincalc-layout-label"
                              style={{position: 'absolute', left: 300, top: 270, width: 80, height: 20}}>
-                            {this.setDoorTitle('tripleDoor3')}
+                            Дверь левая с откр-ем вверх
                         </div>
                         <div className="sizer-up" title="Ширина"
                              style={{position: 'absolute', left: 90, top: 0, width: 298, height: 30}}>
@@ -742,6 +1175,7 @@ class Right extends Component {
 
     handleAddItem = (event) => {
         event.preventDefault();
+
         const {item, addItem} = this.props;
         const {singleW, singleH, single} = this.state;
         const sum = this.sum.innerHTML;
@@ -816,19 +1250,13 @@ class Right extends Component {
                                         <div className="wincalc-child-modules">
                                             <div className="wincalc-add-to-basket-module">
                                                 <div className="wincalc-module-body">
-                                                    <a href="#" onClick={this.handleAddItem}>Добавить вкорзину</a></div>
+                                                    <a href="#" onClick={this.handleAddItem}>Добавить</a></div>
                                                 <div className="wincalc-clear"></div>
                                             </div>
                                         </div>
                                         <div className="wincalc-clear"></div>
                                     </div>
                                 </div>
-                                <div className="wincalc-clear"></div>
-                            </div>
-                            <div className="box red wincalc-errors-module"
-                                 style={{display: 'none', position: 'absolute', top: 0}}><h1>
-                                Исправьте ошибки!</h1>
-                                <div className="wincalc-module-body"></div>
                                 <div className="wincalc-clear"></div>
                             </div>
                         </div>

@@ -67,19 +67,13 @@ class Basket extends Component {
                 case 1:
                     return 'Глухая створка';
                 case 2:
-                    return 'Повортная влево';
-                case 3:
                     return 'Повортно / откидная левая';
-                case 4:
-                    return 'Повортная вправо';
-                case 5:
+                case 3:
                     return 'Повортная / откидная правая';
             }
         }
 
-
-
-
+        
         return order.map(item =>
             <div className="wincalc-basket-item" key={item.id}>
                 <div className="icon"
